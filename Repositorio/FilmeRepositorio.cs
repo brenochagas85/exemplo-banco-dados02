@@ -69,7 +69,7 @@ namespace Repositorio
             return filmes;
         }
        
-        public Filme ObterPeloId()
+        public Filme ObterPeloId(int id)
         {
             SqlConnection conexao = new SqlConnection();
             conexao.ConnectionString = CadeiaConexao;
@@ -83,6 +83,7 @@ namespace Repositorio
 
             DataTable datatable = new DataTable();
             datatable.Load(comando.ExecuteReader());
+            conexao.Close();
             if(datatable.Rows.Count == 1)
             {
                 DataRow linha = datatable.Rows[0];
