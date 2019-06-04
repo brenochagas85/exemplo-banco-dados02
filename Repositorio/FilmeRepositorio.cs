@@ -77,7 +77,7 @@ namespace Repositorio
 
             SqlCommand comando = new SqlCommand();
             comando.Connection = conexao;
-            comando.CommandText = "SELECT * filmes WHERE id =@ID";
+            comando.CommandText = "SELECT * FROM filmes WHERE id = @ID";
 
             comando.Parameters.AddWithValue("ID", id);
 
@@ -142,6 +142,7 @@ namespace Repositorio
             SqlCommand comando = new SqlCommand();
             comando.Connection = conexao;
             comando.CommandText = @"UPDATE filmes SET nome = @NOME, categoria = @CATEGORIA, curtiu = @CURTIU, duracao = @DURACAO, avaliacao = @AVALIACAO, tem_sequencia = @TEM_SEQUENCIA WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", filme.Id);
             comando.Parameters.AddWithValue("@NOME", filme.Nome);
             comando.Parameters.AddWithValue("CATEGORIA", filme.Categoria);
             comando.Parameters.AddWithValue("@CURTIU", filme.Curtiu);
